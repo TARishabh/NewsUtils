@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
-export default class NewsItem extends Component {
+const NewsItem = (props) => {
 
-    colorDecider = (category) =>{
+    const colorDecider = (category) =>{
         if (category === 'sports'){
             return 'info'
         }
@@ -14,12 +14,10 @@ export default class NewsItem extends Component {
             return 'success'
         }
     }
-
-    render() {
-        let {title,description,imageUrl,url,publishedDate,authorName,category} = this.props
+        let {title,description,imageUrl,url,publishedDate,authorName,category} = props
         return (
             <div className="card" style={{width: "18rem"}}>
-            <span className={`position-absolute top-0 start-100 translate-middle p-2 bg-${this.colorDecider(category)} border border-light rounded-circle`}></span>
+            <span className={`position-absolute top-0 start-100 translate-middle p-2 bg-${colorDecider(category)} border border-light rounded-circle`}></span>
             <img src={imageUrl} className="card-img-top" alt="..."/>
             <div className="card-body">
                 <h5 className="card-title">{title}</h5>
@@ -30,5 +28,6 @@ export default class NewsItem extends Component {
             </div>
             </div>
         )
-    }
 }
+
+export default NewsItem;
